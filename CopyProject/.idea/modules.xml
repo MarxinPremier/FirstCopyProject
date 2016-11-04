@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/APP/APP.iml" filepath="$PROJECT_DIR$/APP/APP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Autolayout/Autolayout.iml" filepath="$PROJECT_DIR$/Autolayout/Autolayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CopyProject.iml" filepath="$PROJECT_DIR$/CopyProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Library_AsyncHttp/Library_AsyncHttp.iml" filepath="$PROJECT_DIR$/Library_AsyncHttp/Library_AsyncHttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Library_Fastjson/Library_Fastjson.iml" filepath="$PROJECT_DIR$/Library_Fastjson/Library_Fastjson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Library_Lite_Pal/Library_Lite_Pal.iml" filepath="$PROJECT_DIR$/Library_Lite_Pal/Library_Lite_Pal.iml" />
+    </modules>
+  </component>
+</project>

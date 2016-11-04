@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--登录输入框的属性-->
+    <declare-styleable name="EditTextLayout">
+        <attr name="editHint"  format="string"/>
+        <attr name="editName"  format="string"/>
+    </declare-styleable>
+
+
+</resources>

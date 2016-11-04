@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_guide_view_four"
+    android:orientation="vertical">
+    
+    <TextView
+        android:onClick="toOtherActivity"
+        android:layout_width="230px"
+        android:layout_height="64px"
+        android:text="@string/guide_tv"
+        android:gravity="center"
+        android:textSize="@dimen/txt_16_sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60px"
+        android:textColor="@color/main_guide_start_btn_txt"
+        android:background="@drawable/start_btn_bg"
+        />
+
+    
+</RelativeLayout>

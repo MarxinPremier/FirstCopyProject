@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="600px"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_dialog_bg_comtent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="16px"
+            android:text="@string/about_us"
+            android:textColor="@color/dialog_title_txt_color"
+            android:textSize="@dimen/txt_16_sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20px"
+            android:paddingBottom="20px"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
+            android:textColor="@color/dialog_content_txt_color"
+            android:textSize="@dimen/txt_15_sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="600px"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/rightBtn"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/common_selector_dialog_single_btn"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/dialog_btn_txt_color"
+            android:textSize="@dimen/txt_18_sp" />
+    </LinearLayout>
+
+</LinearLayout>

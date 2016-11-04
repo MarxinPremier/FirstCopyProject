@@ -1,0 +1,1 @@
+include ':APP', ':Library_Lite_Pal', ':Autolayout', ':Library_AsyncHttp', ':Library_Fastjson'

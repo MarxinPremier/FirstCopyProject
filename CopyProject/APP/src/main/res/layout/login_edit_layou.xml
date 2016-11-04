@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="30px"
+    android:paddingLeft="20px"
+    android:paddingRight="20px"
+    android:paddingTop="30px"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/login_edit_name"
+        style="@style/login_edit_name_style" />
+
+    <EditText
+        android:layout_marginLeft="20px"
+        android:id="@+id/login_edit_editText"
+        style="@style/login_edit_edittext_style"
+        android:layout_toLeftOf="@+id/login_edit_down_btn"
+        android:layout_toRightOf="@+id/login_edit_name"
+        />
+
+    <ImageView
+        android:id="@+id/login_edit_del_btn"
+        style="@style/login_edit_del_btn_style"
+        android:visibility="gone"
+        android:layout_alignRight="@+id/login_edit_editText"
+        />
+
+    <ImageView
+        android:id="@+id/login_edit_down_btn"
+        style="@style/login_edit_down_btn_style"
+        android:visibility="gone"
+        />
+</RelativeLayout>

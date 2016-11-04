@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="white">#fff</color>
+    <color name="transparentColor">#00000000</color>
+    <color name="start_seconds_bg_color">#22000000</color>
+    <color name="white_f9">#F9F9F9</color>
+
+    <!--引导页-->
+    <color name="main_guide_start_btn_txt">#2089cb</color>
+    <!--登录页-->
+    <color name="login_name_txt_color">#333333</color>
+    <color name="login_name_edit_hint_color">#dddddd</color>
+    <color name="login_bg_color">#F3F3F3</color>
+    <color name="login_lab_color">#DDDDDD</color>
+    <color name="login_forget_tv_color">#888888</color>
+    <color name="login_org_line_tv_color">#cccccc</color>
+    <!--popupwindows提示框字体颜色-->
+    <color name="dialog_title_txt_color">#283c61</color>
+    <color name="dialog_content_txt_color">#a8a7b9</color>
+    <color name="dialog_btn_txt_color">#0178fa</color>
+
+</resources>

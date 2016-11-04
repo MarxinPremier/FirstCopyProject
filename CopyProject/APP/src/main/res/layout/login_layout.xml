@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:EditTextLayout="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_bg_color">
+
+    <ImageView
+        android:id="@+id/login_logo_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100px"
+        android:src="@drawable/main_login_logo" />
+
+    <com.wangzuo.copyproject.business.login.view.EditTextLayout
+        android:id="@+id/login_org_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_logo_img"
+        android:layout_marginTop="40px"
+        EditTextLayout:editHint="@string/login_org_hint"
+        EditTextLayout:editName="@string/login_org_logo" />
+
+
+    <View
+        android:id="@+id/lab_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/login_org_edit_text"
+        android:background="@color/login_lab_color"
+        />
+
+    <com.wangzuo.copyproject.business.login.view.EditTextLayout
+        android:id="@+id/login_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lab_line_1"
+        EditTextLayout:editHint="@string/login_name_hint"
+        EditTextLayout:editName="@string/login_name_logo" />
+
+    <View
+        android:id="@+id/lab_line_2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/login_name_edit_text"
+        android:background="@color/login_lab_color"
+        />
+
+    <com.wangzuo.copyproject.business.login.view.EditTextLayout
+        android:id="@+id/login_pwd_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lab_line_2"
+        EditTextLayout:editHint="@string/login_pwd_hint"
+        EditTextLayout:editName="@string/login_pwd_logo" />
+
+    <View
+        android:id="@+id/lab_line_3"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/login_pwd_edit_text"
+        android:background="@color/login_lab_color"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/login_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_pwd_edit_text"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="30px"
+        android:background="@drawable/login_btn_bg"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_18_sp" />
+
+    <TextView
+        android:id="@+id/login_forget_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30px"
+        android:gravity="center"
+        android:text="@string/login_forget_pwd"
+        android:textColor="@color/login_forget_tv_color"
+        android:textSize="@dimen/txt_14_sp" />
+
+    <TextView
+        android:id="@+id/login_company_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_hotline_tv"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/login_org"
+        android:textColor="@color/login_org_line_tv_color"
+        android:textSize="@dimen/txt_10_sp" />
+
+    <TextView
+        android:id="@+id/login_hotline_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20px"
+        android:layout_marginTop="10px"
+        android:gravity="center"
+        android:text="@string/login_hotline"
+        android:textColor="@color/login_org_line_tv_color"
+        android:textSize="@dimen/txt_10_sp" />
+
+    <ListView
+        android:id="@+id/login_org_list"
+        android:visibility="gone"
+        android:layout_below="@+id/login_org_edit_text"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
