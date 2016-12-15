@@ -1,6 +1,8 @@
 package com.wangzuo.copyproject.component.requestModel;
 
 import android.os.Handler;
+
+import com.wangzuo.copyproject.common.utils.PreferenceDB;
 import com.wangzuo.copyproject.component.request.AsyncHttpClientTask;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ import java.util.Map;
 public class RequestTask {
 
     /**
-     * 获得一个请修改
+     * 获得一个请求
      */
     public static final ARequestTaskModel request = AsyncHttpClientTask.getInstance();
 
@@ -49,5 +51,21 @@ public class RequestTask {
      */
     public static void httpParams(String url, Map<String, Object> params, Handler handler){
         request.httpParams(url,params,handler);
+    }
+
+    /**
+     * 普通请求URL
+     * @param url
+     */
+    public static String getUrl(String url){
+        return new StringBuffer(PreferenceDB.getInstance().getMlds()).append("/").append(url).toString();
+    }
+
+    /**
+     * adapter请求
+     * @param url
+     */
+    public static String getAurl(String url){
+        return  new StringBuffer(PreferenceDB.getInstance().getAdapterUrl()).append("/").append(url).toString();
     }
 }

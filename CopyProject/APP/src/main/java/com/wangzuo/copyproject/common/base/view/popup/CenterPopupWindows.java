@@ -28,13 +28,14 @@ public abstract class CenterPopupWindows extends PopupWindow {
     private View mContentView;
     private TextView title, content;
     private TextView leftBtn, rightBtn;
+    private boolean mTwoBtn;
+
 
     /**
      * 默认构造
      * 根据标签选择使用一个按钮的布局还是两个按钮的布局
-     *
      * @param context
-     * @param twoBtn
+     * @param twoBtn  為真就是兩個，為假就是一個按鈕
      */
     public CenterPopupWindows(Context context, boolean twoBtn) {
         this(twoBtn ?
@@ -57,21 +58,28 @@ public abstract class CenterPopupWindows extends PopupWindow {
     private CenterPopupWindows(View contentView, int width, int height, boolean twoBtn) {
         super(contentView, width, height, true);
         mContentView = contentView;
+        mTwoBtn = twoBtn;
+    }
+
+    /**
+     * 開始建造
+     */
+    public CenterPopupWindows buid() {
         setAnimationStyle(android.R.style.Animation_Dialog);
         setOutsideTouchable(true);
         setTouchable(true);
         setFocusable(true);
         setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        setBackgroundDrawable(contentView.getResources().getDrawable(R.drawable.common_pubic_bg_half));
+        setBackgroundDrawable(mContentView.getResources().getDrawable(R.drawable.common_pubic_bg_half));
 
         //初始化title
-        title = (TextView) contentView.findViewById(R.id.title);
+        title = (TextView) mContentView.findViewById(R.id.title);
         title.setText(getTitle());
         //初始化content
-        content = (TextView) contentView.findViewById(R.id.content);
+        content = (TextView) mContentView.findViewById(R.id.content);
         content.setText(getContent());
         //设定按键监听
-        rightBtn = (TextView) contentView.findViewById(R.id.rightBtn);
+        rightBtn = (TextView) mContentView.findViewById(R.id.rightBtn);
         rightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,9 +87,10 @@ public abstract class CenterPopupWindows extends PopupWindow {
                 rightEvent();
             }
         });
-        if (twoBtn) {
+        rightBtn.setText(getRightText());
+        if (mTwoBtn) {
             //双按钮时，需要继续设定左边按键监听
-            leftBtn = (TextView) contentView.findViewById(R.id.leftBtn);
+            leftBtn = (TextView) mContentView.findViewById(R.id.leftBtn);
             leftBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -89,10 +98,13 @@ public abstract class CenterPopupWindows extends PopupWindow {
                     leftEvent();
                 }
             });
-        } else {//单按钮时需要给右边按键设置文本
-            rightBtn.setText(getRightText());
+            leftBtn.setText(getLeftText());
         }
+        return this;
     }
+
+    protected abstract String getLeftText();
+
 
     /**
      * 给右边按键设置文本
@@ -137,5 +149,11 @@ public abstract class CenterPopupWindows extends PopupWindow {
      */
     protected abstract String getTitle();
 
+    public TextView getTitleTv() {
+        return title;
+    }
 
+    public TextView getContentTv() {
+        return content;
+    }
 }

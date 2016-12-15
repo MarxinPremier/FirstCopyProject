@@ -1,10 +1,9 @@
-package com.wangzuo.copyproject.business.login.view;
+package com.wangzuo.copyproject.business.login.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,39 +16,42 @@ import com.wangzuo.copyproject.R;
 import com.wangzuo.copyproject.business.login.adapter.OrgAdapter;
 import com.wangzuo.copyproject.business.login.bean.HistoryOrgBean;
 import com.wangzuo.copyproject.business.login.inter.LoginInterface;
+import com.wangzuo.copyproject.business.login.presenter.LoginOrgPresenter;
 import com.wangzuo.copyproject.business.login.presenter.LoginPresenter;
+import com.wangzuo.copyproject.business.login.view.EditTextLayout;
+import com.wangzuo.copyproject.business.login.view.Listener.LoginButtonDisplayWatcher;
+import com.wangzuo.copyproject.business.login.view.Listener.LoginListener;
 import com.wangzuo.copyproject.common.base.activity.MVPBaseActivity;
+import com.wangzuo.copyproject.common.base.view.dialog.BaseLoadDialog;
 import com.wangzuo.copyproject.common.utils.ActivityUtils;
 import com.wangzuo.copyproject.common.utils.AnimUtils;
+import com.wangzuo.copyproject.common.utils.ResourceUtils;
 import com.wangzuo.copyproject.common.utils.ToastUtils;
 
-import org.litepal.crud.DataSupport;
-
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 
 /**
  * Created by hejie on 2016/11/1.
- *
+ * <p>
  * 登录页面
  * 1.密码输入框变成密文
  * 2.机构输入框的列表
  * 3.机构输入框更多按钮的隐藏情况
- *      --- 箭头点击状态反转
- *      --- 列表的数据清空时会让布局消失
+ * --- 箭头点击状态反转
+ * --- 列表的数据清空时会让布局消失
  * 4.输入框与登录按钮的联动
  * 5.logo动画
  * 6.找回密码跳转
  * 7.拨打电话跳转
  * 8.机构名的数据库存储时间问题
- *      --- 删除一条机构数据就进行一次数据更新
- *      --- 登录成功也要进行一次机构数据更新(注意查重)
- *  9.键盘监听
- *      --- 检测是否退出
- *  10.自动填写问题
+ * --- 删除一条机构数据就进行一次数据更新
+ * --- 登录成功也要进行一次机构数据更新(注意查重)
+ * 9.键盘监听
+ * --- 检测是否退出
+ * 10.自动填写问题
  */
 
-public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter> implements LoginInterface,AdapterView.OnItemClickListener{
+public class LoginActivity extends MVPBaseActivity<LoginInterface, LoginPresenter> implements LoginInterface, AdapterView.OnItemClickListener {
 
     private ImageView logoImg;
     private EditTextLayout orgEditLayou;
@@ -70,6 +72,7 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
     private boolean isReLogin;
     private String id;
     private String type;
+    private BaseLoadDialog loadDailog ;
 
     @Override
     protected void initView() {
@@ -83,7 +86,19 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
         initLoginBtn();
 
         initOrgList();
+
+        initLoginUrl();
     }
+
+    /**
+     * 初始化url的config配置请求
+     */
+    private void initLoginUrl() {
+
+        new LoginOrgPresenter(this,loadDailog);
+
+    }
+
 
     /**
      * 初始化机构列表
@@ -91,19 +106,16 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
     private void initOrgList() {
         arrayList.clear();
         mPresenter.getOrgList(arrayList);
-        orgList.setAdapter(new OrgAdapter(this,arrayList,mPresenter));
+        orgList.setAdapter(new OrgAdapter(this, arrayList, mPresenter));
         //模拟数据
         arrayList.add(new HistoryOrgBean("diyitiao"));
-
-        ((OrgAdapter)orgList.getAdapter()).notifyDataSetChanged();
-
+        ((OrgAdapter) orgList.getAdapter()).notifyDataSetChanged();
         orgDownMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showMoreOrgList();
             }
         });
-
         orgList.setOnItemClickListener(this);
     }
 
@@ -111,10 +123,10 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
      * 根据情况显示结构列表与否
      */
     private void showMoreOrgList() {
-        if (orgList.getVisibility() == View.GONE){
+        if (orgList.getVisibility() == View.GONE) {
             orgList.setVisibility(View.VISIBLE);
             orgDownMoreBtn.setImageResource(R.drawable.main_login_txt_up);
-        }else if (orgList.getVisibility() == View.VISIBLE){
+        } else if (orgList.getVisibility() == View.VISIBLE) {
             orgList.setVisibility(View.GONE);
             orgDownMoreBtn.setImageResource(R.drawable.main_login_txt_down);
         }
@@ -125,12 +137,12 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
      */
     private void initLoginBtn() {
         //绑定监听器
-        watcher = new LoginButtonDisplayWatcher(orgEdit,accountEdit,pwdEdit,loginbtn);
+        watcher = new LoginButtonDisplayWatcher(orgEdit, accountEdit, pwdEdit, loginbtn);
         orgEdit.addTextChangedListener(watcher);
         accountEdit.addTextChangedListener(watcher);
         pwdEdit.addTextChangedListener(watcher);
         //登录监听
-        loginListener = new LoginListener(this,orgEdit,accountEdit,pwdEdit,hotLine);
+        loginListener = new LoginListener(this, orgEdit, accountEdit, pwdEdit, hotLine, mPresenter);
         loginbtn.setOnClickListener(loginListener);
         //电话热线
         hotLine.setOnClickListener(loginListener);
@@ -142,7 +154,7 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
      * 初始化logo的动画
      */
     private void initLogoAnim() {
-        AnimUtils.enLarge(this,logoImg);
+        AnimUtils.enLarge(this, logoImg);
     }
 
     /**
@@ -183,7 +195,7 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
     @Override
     protected void initIntent() {
         Intent intent = getIntent();
-        if (intent != null){
+        if (intent != null) {
             isReLogin = intent.getBooleanExtra("isReLogin", false);
             id = intent.getStringExtra("id");
             type = intent.getStringExtra("type");
@@ -191,13 +203,12 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
     }
 
     @Override
-    protected void initEvent() {
-
-    }
+    protected void initEvent() {}
 
     @Override
     protected LoginPresenter createPresenter() {
-        return new LoginPresenter();
+        loadDailog = new BaseLoadDialog(this);
+        return new LoginPresenter(this, loadDailog);
     }
 
     @Override
@@ -208,6 +219,7 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
 
     /**
      * 机构列表点击事件用于重新选择机构名
+     *
      * @param adapterView
      * @param view
      * @param i
@@ -227,10 +239,10 @@ public class LoginActivity extends MVPBaseActivity<LoginInterface,LoginPresenter
      */
     @Override
     public void onBackPressed() {
-        if ((System.currentTimeMillis() - lastTime)>3000){//大于3秒就重新按下
-            ToastUtils.showToast(this,"");
+        if ((System.currentTimeMillis() - lastTime) > 3000) {//大于3秒就重新按下
             lastTime = System.currentTimeMillis();
-        }else {
+            ToastUtils.showToast(this,ResourceUtils.getString(R.string.common_app_exit_hint));
+        } else {
             ActivityUtils.finishActivity(this);
             System.exit(0);
         }

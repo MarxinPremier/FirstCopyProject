@@ -18,4 +18,13 @@
     <dimen name="txt_16_sp">16sp</dimen>
     <dimen name="txt_18_sp">18sp</dimen>
 
+    <dimen name="space_size_2">2dp</dimen>
+    <dimen name="space_size_3">3dp</dimen>
+    <dimen name="space_size_5">5dp</dimen>
+    <dimen name="space_size_6">6dp</dimen>
+    <!--通知进度提示框的-->
+    <dimen name="notifacation_progress_max_height">50dp</dimen>
+    <dimen name="notifacation_progress_min_height">3dp</dimen>
+
+
 </resources>

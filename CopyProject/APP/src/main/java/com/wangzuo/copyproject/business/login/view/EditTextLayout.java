@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.wangzuo.copyproject.R;
+import com.wangzuo.copyproject.business.login.view.Listener.ButtnDisplayWatcher;
+import com.wangzuo.copyproject.business.login.view.Listener.EditTextFocusListener;
 import com.wangzuo.copyproject.common.utils.EmojiFilter;
 import com.wangzuo.copyproject.common.utils.InflaterUtils;
 

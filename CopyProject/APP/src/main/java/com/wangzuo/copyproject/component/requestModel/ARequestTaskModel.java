@@ -9,7 +9,7 @@ import android.os.Handler;
 
 import com.wangzuo.copyproject.R;
 import com.wangzuo.copyproject.application.ProjectLitePalApplication;
-import com.wangzuo.copyproject.business.login.view.LoginActivity;
+import com.wangzuo.copyproject.business.login.view.activity.LoginActivity;
 import com.wangzuo.copyproject.common.base.view.popup.CenterPopupWindows;
 import com.wangzuo.copyproject.common.utils.GlobalConstants;
 import com.wangzuo.copyproject.common.utils.JsonConstants;
@@ -92,6 +92,11 @@ public abstract class ARequestTaskModel {
         try {
             final CenterPopupWindows centerPopupWindows = new CenterPopupWindows(currentActivity, false) {
                 @Override
+                protected String getLeftText() {
+                    return null;
+                }
+
+                @Override
                 protected String getRightText() {
                     return ResourceUtils.getString(R.string.reload_hint);
                 }
@@ -125,6 +130,7 @@ public abstract class ARequestTaskModel {
                     return message;
                 }
             };
+            centerPopupWindows.showPopup(centerPopupWindows.getContentView());
         } catch (Exception e) {
             e.printStackTrace();
         }

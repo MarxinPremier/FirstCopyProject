@@ -37,7 +37,7 @@ public class PreferencesUtils {
      * @param defaultValue 提取默认值
      * @return 提出的内容
      */
-    public static String getStrig(String key,String defaultValue){
+    public static String getString(String key,String defaultValue){
         SharedPreferences sharedPreferences = ProjectLitePalApplication.getContext().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         return  sharedPreferences.getString(key,defaultValue);
     }
@@ -48,7 +48,7 @@ public class PreferencesUtils {
      * @return 提取的字符串
      */
     public static String getString(String key){
-        return  getStrig(key,null);
+        return  getString(key,null);
     }
 
     /**

@@ -19,17 +19,17 @@ import com.wangzuo.copyproject.common.utils.DisplayUtils;
  *
  */
 
-public class DiyDialog extends Dialog implements LoadDialogInterface{
+public class LoadDialog extends Dialog implements LoadDialogInterface{
 
     private static int default_width = 160;//默认宽度
     private static int default_height = 120;//默认高度
     private TextView hint;
 
-    public DiyDialog(Context context) {
+    public LoadDialog(Context context) {
         this(context,default_width,default_height, R.layout.common_dialog_layout,R.style.AppTheme);
     }
 
-    public DiyDialog(Context context,int width,int height,int layoutId,int style){
+    public LoadDialog(Context context, int width, int height, int layoutId, int style){
         super(context,style);
         setContentView(layoutId);
         hint = (TextView) findViewById(R.id.dialog_tv);

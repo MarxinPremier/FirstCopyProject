@@ -7,7 +7,7 @@ import com.wangzuo.copyproject.R;
 import com.wangzuo.copyproject.business.guide.adapter.GuideAdapter;
 import com.wangzuo.copyproject.business.guide.inter.GuideInterface;
 import com.wangzuo.copyproject.business.guide.presenter.GuidePresenter;
-import com.wangzuo.copyproject.business.login.view.LoginActivity;
+import com.wangzuo.copyproject.business.login.view.activity.LoginActivity;
 import com.wangzuo.copyproject.common.base.activity.MVPBaseActivity;
 import com.wangzuo.copyproject.common.utils.ActivityUtils;
 import com.wangzuo.copyproject.common.utils.InflaterUtils;

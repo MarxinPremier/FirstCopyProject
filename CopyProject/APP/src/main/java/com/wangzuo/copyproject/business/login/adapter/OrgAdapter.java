@@ -3,12 +3,10 @@ package com.wangzuo.copyproject.business.login.adapter;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.wangzuo.copyproject.R;
 import com.wangzuo.copyproject.business.login.bean.HistoryOrgBean;
 import com.wangzuo.copyproject.business.login.presenter.LoginPresenter;
-import com.wangzuo.copyproject.business.login.view.LoginActivity;
 import com.wangzuo.copyproject.common.base.adapter.SimpleBaseAdapter;
 
 import java.util.List;

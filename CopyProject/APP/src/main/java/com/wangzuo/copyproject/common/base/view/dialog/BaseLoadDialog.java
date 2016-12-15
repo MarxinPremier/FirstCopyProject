@@ -6,7 +6,7 @@ import android.content.Context;
  * <p>
  * 基本的提示框,可以自行构造，继承LoadDialogInterface接口
  * 根据模板来写就行了,替换度对象名称即可,下面是可以替换的Dialog对象
- * {@link DiyDialog}
+ * {@link LoadDialog}
  */
 
 public class BaseLoadDialog {
@@ -14,7 +14,7 @@ public class BaseLoadDialog {
     private LoadDialogInterface diyDialogInter;
 
     public BaseLoadDialog(Context context) {
-        diyDialogInter = new DiyDialog(context);
+        diyDialogInter = new LoadDialog(context);
     }
 
     public void loadHint(String hint) {

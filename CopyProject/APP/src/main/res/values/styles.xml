@@ -52,4 +52,13 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <!--apk下载提示框的进度样式-->
+    <style name="ProgressBar_Mini" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">@dimen/notifacation_progress_max_height</item>
+        <item name="android:minHeight">@dimen/notifacation_progress_min_height</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/main_load_skin_progressbar_bg</item>
+    </style>
+
 </resources>

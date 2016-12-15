@@ -1,16 +1,15 @@
-package com.wangzuo.copyproject.business.login.view;
+package com.wangzuo.copyproject.business.login.view.Listener;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.wangzuo.copyproject.R;
-import com.wangzuo.copyproject.common.utils.ActivityUtils;
+import com.wangzuo.copyproject.business.login.bean.LoginParams;
+import com.wangzuo.copyproject.business.login.presenter.LoginPresenter;
+import com.wangzuo.copyproject.common.utils.PhoneUtils;
 import com.wangzuo.copyproject.common.utils.ResourceUtils;
 import com.wangzuo.copyproject.common.utils.ToastUtils;
 
@@ -26,14 +25,21 @@ public class LoginListener implements View.OnClickListener {
     private final EditText mAccountEdit;
     private final EditText mPwdEdit;
     private final Context mContext;
-    private final TextView mTextView;
+    private final TextView moPhoneTextView;
+    private final LoginPresenter mLoginPresenter;
 
-    public LoginListener(Context context, EditText orgEdit, EditText accountEdit, EditText pwdEdit, TextView textView) {
+    public LoginListener(Context context,
+                         EditText orgEdit,
+                         EditText accountEdit,
+                         EditText pwdEdit,
+                         TextView textView,
+                         LoginPresenter loginPresenter) {
         mOrgEdit = orgEdit;
         mAccountEdit = accountEdit;
         mPwdEdit = pwdEdit;
         mContext = context;
-        mTextView = textView;
+        moPhoneTextView = textView;
+        mLoginPresenter = loginPresenter;
     }
 
     @Override
@@ -64,10 +70,7 @@ public class LoginListener implements View.OnClickListener {
      * 拨打电话
      */
     private void call() {
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.CALL");
-        intent.setData(Uri.parse("tel:"+mTextView.getText()+""));
-        ActivityUtils.startActivity(mContext,intent);
+        PhoneUtils.phoneCall(mContext,moPhoneTextView.getText().toString());
     }
 
     /**
@@ -90,5 +93,12 @@ public class LoginListener implements View.OnClickListener {
             return;
         }
         //登录代码
+        LoginParams loginParams = new LoginParams();
+        loginParams.setOrg(orgTrim);
+        loginParams.setAccount(accountTrim);
+        loginParams.setPwd(pwdTrim);
+        loginParams.setModel(android.os.Build.MODEL);
+        loginParams.setRelease(android.os.Build.VERSION.RELEASE);
+        mLoginPresenter.startLogin(loginParams);
     }
 }
