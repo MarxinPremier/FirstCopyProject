@@ -36,4 +36,6 @@ dependencies {
     compile project(':Library_Fastjson')
     //下拉刷新控件
     compile 'com.github.MarxinPremier:PullDownRefreshView:1.2'
+    //recycleview
+    compile 'com.android.support:recyclerview-v7:24.2.0'
 }
