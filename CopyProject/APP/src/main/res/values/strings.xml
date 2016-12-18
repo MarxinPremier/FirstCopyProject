@@ -53,5 +53,6 @@
     <string name="login_time_out">登录超时,请重新登录</string>
     <string name="internet_out">当前网络不可用,请检查你的网络设置</string>
     <string name="request_fai">请求失败</string>
+    <string name="common_pause_no">暂无</string>
 
 </resources>

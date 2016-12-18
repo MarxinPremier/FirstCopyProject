@@ -38,4 +38,10 @@ dependencies {
     compile 'com.github.MarxinPremier:PullDownRefreshView:1.2'
     //recycleview
     compile 'com.android.support:recyclerview-v7:24.2.0'
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:2.1.0"
+    compile "com.squareup.retrofit2:converter-gson:2.1.0"
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    //okhttp3
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
 }

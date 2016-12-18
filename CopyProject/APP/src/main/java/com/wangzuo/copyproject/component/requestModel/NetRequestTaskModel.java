@@ -25,7 +25,7 @@ import java.util.Map;
  * 网络请求框架，抽象父类
  */
 
-public abstract class ARequestTaskModel {
+public abstract class NetRequestTaskModel {
 
     /**
      * 用于记录的当前activity,便于广播信息之后

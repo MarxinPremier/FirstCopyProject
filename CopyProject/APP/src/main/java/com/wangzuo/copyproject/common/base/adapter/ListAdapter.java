@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Created by hejie on 2016/11/1.
  * <p>
- * adapter 的简易封装
  */
 
 public abstract  class ListAdapter extends BaseAdapter {

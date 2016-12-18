@@ -19,7 +19,7 @@ public class RequestTask {
     /**
      * 获得一个请求
      */
-    public static final ARequestTaskModel request = AsyncHttpClientTask.getInstance();
+    public static final NetRequestTaskModel request = AsyncHttpClientTask.getInstance();
 
 
     /**

@@ -11,7 +11,7 @@ import com.wangzuo.copyproject.common.utils.JsonConstants;
 import com.wangzuo.copyproject.common.utils.JsonUtils;
 import com.wangzuo.copyproject.common.utils.LogUtils;
 import com.wangzuo.copyproject.common.utils.MapUtils;
-import com.wangzuo.copyproject.component.requestModel.ARequestTaskModel;
+import com.wangzuo.copyproject.component.requestModel.NetRequestTaskModel;
 import com.wangzuo.copyproject.component.requestModel.BaseJson;
 import com.wangzuo.copyproject.component.requestModel.StatusConstants;
 import org.apache.http.Header;
@@ -24,7 +24,7 @@ import java.util.Map;
  * 使用异步请求框架
  */
 
-public class AsyncHttpClientTask extends ARequestTaskModel {
+public class AsyncHttpClientTask extends NetRequestTaskModel {
 
     private final AsyncHttpClient client = new AsyncHttpClient();//实例化对象
 
